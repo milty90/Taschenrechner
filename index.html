@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taschenrechner</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="calculator">
+        <div class="calculator__display">
+          <input type="text" id="display" />
+        </div>
+        <div class="logo">
+          <h5>orbitron</h5>
+          <div class="toggle-wrapper">
+            <input class="toggle-checkbox" type="checkbox" />
+            <div class="toggle-container">
+              <div class="toggle-button">
+                <div class="toggle-button-circles-container">
+                  <!--<div class="toggle-button-circle"></div>
+                  <div class="toggle-button-circle"></div>
+                  <div class="toggle-button-circle"></div>
+                  <div class="toggle-button-circle"></div>
+                   <div class="toggle-button-circle"></div>
+                  <div class="toggle-button-circle"></div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="calculator__keys">
+          <button class="process" id="CE" onclick="clearDisplay()">CE</button>
+          <button class="process" id="C" onclick="clearDisplay()">C</button>
+          <button class="process" id="/" onclick="appendToDisplay('/')">
+            /
+          </button>
+          <button class="process" id="*" onclick="appendToDisplay('*')">
+            *
+          </button>
+          <button class="number" id="7" onclick="appendToDisplay('7')">
+            7
+          </button>
+          <button class="number" id="8" onclick="appendToDisplay('8')">
+            8
+          </button>
+          <button class="number" id="9" onclick="appendToDisplay('9')">
+            9
+          </button>
+          <button class="process" id="-" onclick="appendToDisplay('-')">
+            -
+          </button>
+          <button class="number" id="4" onclick="appendToDisplay('4')">
+            4
+          </button>
+          <button class="number" id="5" onclick="appendToDisplay('5')">
+            5
+          </button>
+          <button class="number" id="6" onclick="appendToDisplay('6')">
+            6
+          </button>
+          <button class="process" id="+" onclick="appendToDisplay('+')">
+            +
+          </button>
+          <button class="number" id="1" onclick="appendToDisplay('1')">
+            1
+          </button>
+          <button class="number" id="2" onclick="appendToDisplay('2')">
+            2
+          </button>
+          <button class="number" id="3" onclick="appendToDisplay('3')">
+            3
+          </button>
+          <button id="null" onclick="appendToDisplay('0')">0</button>
+          <button class="number" id="." onclick="appendToDisplay('.')">
+            .
+          </button>
+          <button class="calculate" id="=" onclick="appendToDisplay('=')">
+            =
+          </button>
+        </div>
+      </div>
+      <div class="divider">
+        <p>Developed by DevKarriere</p>
+        <hr />
+      </div>
+      <div class="results">
+        <ul class="results-list">
+          <li>12 + 8 = 20</li>
+          <li>1 + 1 = 2</li>
+          <li>4 * 5 = 20</li>
+          <li>9 / 3 = 3</li>
+          <li>7 - 2 = 5</li>
+          <li>6 + 4 = 10</li>
+          <li>3 * 3 = 9</li>
+          <li>8 / 2 = 4</li>
+          <li>12 + 8 = 20</li>
+          <li>1 + 1 = 2</li>
+          <li>4 * 5 = 20</li>
+          <li>9 / 3 = 3</li>
+          <li>7 - 2 = 5</li>
+          <li>6 + 4 = 10</li>
+          <li>3 * 3 = 9</li>
+          <li>8 / 2 = 4</li>
+          <li>12 + 8 = 20</li>
+          <li>1 + 1 = 2</li>
+          <li>4 * 5 = 20</li>
+          <li>9 / 3 = 3</li>
+          <li>7 - 2 = 5</li>
+          <li>6 + 4 = 10</li>
+          <li>3 * 3 = 9</li>
+          <li>8 / 2 = 4</li>
+          <li>12 + 8 = 20</li>
+          <li>1 + 1 = 2</li>
+          <li>4 * 5 = 20</li>
+          <li>9 / 3 = 3</li>
+          <li>7 - 2 = 5</li>
+          <li>6 + 4 = 10</li>
+          <li>3 * 3 = 9</li>
+          <li>8 / 2 = 4</li>
+        </ul>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
