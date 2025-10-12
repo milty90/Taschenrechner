@@ -24,6 +24,8 @@ function appendToDisplay(value) {
       listItem.textContent = fullCalculation;
       resultsListElement.appendChild(listItem);
 
+      displayResult.value = calculation + " = " + result;
+
       display.value = result;
 
       console.log("Calculation added:", fullCalculation);
