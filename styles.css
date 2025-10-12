@@ -52,12 +52,44 @@
   gap: 1rem;
 }
 .results-list {
+  display: flex;
+  flex-direction: column-reverse;
   list-style: none;
   padding: 0;
   margin: 0;
 }
 .results-list li {
   padding: 0.5rem 2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0ch;
+  border-right: 0.12em solid black;
+  animation: typing 3s steps(26, end) forwards,
+    blink-caret 0.75s step-end infinite 3.5s;
+}
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 26ch;
+  }
+}
+@keyframes caret-blink {
+  0%,
+  100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: black;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .typewriter {
+    animation: none;
+    width: auto;
+    border-right: none;
+  }
 }
 
 .divider p {
