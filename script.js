@@ -21,10 +21,23 @@ function appendToDisplay(value) {
       // Hozzáadás a listához
       resultsList.push(fullCalculation);
 
+      // // Eltávolítjuk az animációt az előző elemről (ha van)
+      // const previousFirst = resultsListElement.querySelector("li:first-child");
+      // if (previousFirst) {
+      //   previousFirst.style.animation = "none";
+      //   previousFirst.style.width = "26ch";
+      //   previousFirst.style.borderRight = "none";
+      // }
+
       // Új lista elem létrehozása és hozzáadása a HTML-hez
       const listItem = document.createElement("li");
       listItem.textContent = fullCalculation;
       resultsListElement.appendChild(listItem);
+
+      // // Kurzor eltávolítása az animáció végén
+      // setTimeout(() => {
+      //   listItem.style.borderRight = "none";
+      // }, 3500); // 3s typing + 0.5s extra idő
 
       // Az eredmény megjelenítése a display-ben
       display.value = result;

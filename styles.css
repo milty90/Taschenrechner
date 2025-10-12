@@ -62,10 +62,23 @@
   padding: 0.5rem 2rem;
   white-space: nowrap;
   overflow: hidden;
+  color: var(--primary-text-color);
   width: 0ch;
-  border-right: 0.12em solid black;
-  animation: typing 3s steps(26, end) forwards,
-    blink-caret 0.75s step-end infinite 3.5s;
+  border-right: 0.15em solid black;
+  animation: typing 3.5s steps(26, end) forwards,
+    blink-caret 0.75s step-end 3.5s;
+}
+
+.results-list li:last-child {
+  width: 0ch;
+  max-width: fit-content;
+  color: var(--primary-text-color);
+  border-right: 0.15em solid black;
+  animation: typing 3.5s steps(25, end) forwards,
+    blink-caret 0.75s step-end infinite;
+}
+.results-list li:not(:last-child) {
+  border-right: none;
 }
 @keyframes typing {
   from {
@@ -75,22 +88,32 @@
     width: 26ch;
   }
 }
-@keyframes caret-blink {
-  0%,
-  100% {
-    border-color: transparent;
+
+@keyframes show-cursor {
+  from {
+    border-right-color: transparent;
   }
-  50% {
-    border-color: black;
+  to {
+    border-right-color: var(--primary-text-color);
   }
 }
-@media (prefers-reduced-motion: reduce) {
+
+@keyframes blink-caret {
+  0%,
+  100% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: var(--primary-text-color);
+  }
+}
+/*@media (prefers-reduced-motion: reduce) {
   .typewriter {
     animation: none;
     width: auto;
     border-right: none;
   }
-}
+} */
 
 .divider p {
   text-align: center;
