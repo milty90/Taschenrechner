@@ -1,9 +1,10 @@
 var resultsList = [];
 
-function appendToDisplay(value) {
-  const display = document.getElementById("display");
-  const resultsListElement = document.querySelector(".results-list");
+const display = document.getElementById("display");
+const displayResult = document.getElementById("display_result");
+const resultsListElement = document.querySelector(".results-list");
 
+function appendToDisplay(value) {
   if (value === "=") {
     try {
       const calculation = display.value;
@@ -25,7 +26,7 @@ function appendToDisplay(value) {
 
       display.value = result;
 
-      // console.log("Calculation added:", fullCalculation);
+      console.log("Calculation added:", fullCalculation);
     } catch (error) {
       display.value = "Fehler";
     }
@@ -35,8 +36,17 @@ function appendToDisplay(value) {
 }
 
 function clearDisplay() {
-  const display = document.getElementById("display");
   display.value = "";
+}
+function clearEverything() {
+  resultsList = [];
+  console.log("All results cleared.", resultsList);
+
+  resultsListElement.innerHTML = "";
+  console.log("Results list element cleared.", resultsListElement);
+
+  display.value = "";
+  displayResult.value = "";
 }
 
 function toggleDisplayTheme() {
