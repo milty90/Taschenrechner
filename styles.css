@@ -145,13 +145,14 @@ hr {
   background: transparent;
   font-size: 2em;
   text-align: right;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   padding: 10px;
   outline: none;
 }
 
 #display_result {
-  font-size: 1.2em;
+  margin-top: 10px;
+  font-size: 1.3em;
   color: dimgray;
 }
 

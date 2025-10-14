@@ -26,9 +26,9 @@ function appendToDisplay(value) {
 
       displayResult.value = calculation + " = " + result;
 
-      display.value = result;
+      display.value = "";
 
-      console.log("Calculation added:", fullCalculation);
+      // console.log("Calculation added:", fullCalculation);
     } catch (error) {
       display.value = "Fehler";
     }
@@ -42,10 +42,10 @@ function clearDisplay() {
 }
 function clearEverything() {
   resultsList = [];
-  console.log("All results cleared.", resultsList);
+  // console.log("All results cleared.", resultsList);
 
   resultsListElement.innerHTML = "";
-  console.log("Results list element cleared.", resultsListElement);
+  // console.log("Results list element cleared.", resultsListElement);
 
   display.value = "";
   displayResult.value = "";
