@@ -1,54 +1,88 @@
 var resultsList = [];
+var previousValue = "";
+var currentOperator = "";
+var isNewCalculation = false;
 
 const display = document.getElementById("display");
 const displayResult = document.getElementById("display_result");
 const resultsListElement = document.querySelector(".results-list");
 
 function appendToDisplay(value) {
+  console.log("Funktion wurde mit dem Wert aufgerufen:", value); // Test log
+  const operators = ["+", "-", "*", "/"];
+
   if (value === "=") {
     try {
-      const calculation = display.value;
-      const result = eval(display.value);
+      if (display.value && currentOperator && previousValue) {
+        const calculation = `${previousValue} ${currentOperator} ${display.value}`;
 
-      const formattedCalculation = calculation
-        .replace(/\+/g, " + ")
-        .replace(/\-/g, " - ")
-        .replace(/\*/g, " * ")
-        .replace(/\//g, " / ");
+        const result = eval(calculation.replace(/\s/g, ""));
+        // console.log("Calculation:", calculation, "Result:", result);
 
-      const fullCalculation = `${formattedCalculation} = ${result}`;
+        const fullCalculation = `${calculation} = ${result}`;
 
-      resultsList.push(fullCalculation);
+        resultsList.push(fullCalculation);
+        const listItem = document.createElement("li");
+        listItem.innerHTML = fullCalculation;
+        resultsListElement.appendChild(listItem);
 
-      const listItem = document.createElement("li");
-      listItem.textContent = fullCalculation;
-      resultsListElement.appendChild(listItem);
+        displayResult.value = calculation;
 
-      displayResult.value = calculation + " = " + result;
+        display.value = result;
 
-      display.value = "";
+        previousValue = result.toString();
+        currentOperator = "";
+        isNewCalculation = true;
 
-      // console.log("Calculation added:", fullCalculation);
+        // console.log("Calculation added:", fullCalculation);
+      }
     } catch (error) {
       display.value = "Fehler";
     }
+  } else if (operators.includes(value)) {
+    if (display.value) {
+      if (currentOperator && previousValue && !isNewCalculation) {
+        const tempResult = eval(
+          `${previousValue} ${currentOperator} ${display.value}`
+        );
+        display.value = tempResult;
+        previousValue = tempResult.toString();
+      } else {
+        previousValue = display.value;
+      }
+      currentOperator = value;
+      displayResult.value = `${previousValue} ${value}`;
+      display.value = "";
+      isNewCalculation = false;
+    }
   } else {
+    if (isNewCalculation) {
+      display.value = "";
+      displayResult.value = "";
+      previousValue = "";
+      currentOperator = "";
+      isNewCalculation = false;
+    }
     display.value += value;
   }
 }
 
 function clearDisplay() {
   display.value = "";
+  displayResult.value = "";
+  previousValue = "";
+  currentOperator = "";
+  isNewCalculation = false;
 }
+
 function clearEverything() {
   resultsList = [];
-  // console.log("All results cleared.", resultsList);
-
   resultsListElement.innerHTML = "";
-  // console.log("Results list element cleared.", resultsListElement);
-
   display.value = "";
   displayResult.value = "";
+  previousValue = "";
+  currentOperator = "";
+  isNewCalculation = false;
 }
 
 function toggleDisplayTheme() {
