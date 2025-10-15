@@ -137,4 +137,31 @@ document.addEventListener("DOMContentLoaded", function () {
   toggleDisplayTheme();
 
   checkbox.addEventListener("change", toggleDisplayTheme);
+
+  document.addEventListener("keydown", function (event) {
+    const key = event.key;
+
+    if (key >= "0" && key <= "9") {
+      appendToDisplay(key);
+    } else if (key === "+") {
+      appendToDisplay("+");
+    } else if (key === "-") {
+      appendToDisplay("-");
+    } else if (key === "*") {
+      appendToDisplay("*");
+    } else if (key === "/" || key === "%") {
+      event.preventDefault();
+      appendToDisplay("/");
+    } else if (key === "." || key === ",") {
+      appendToDisplay(".");
+    } else if (key === "Enter" || key === "=") {
+      event.preventDefault();
+      appendToDisplay("=");
+    } else if (key === "Escape" || key.toLowerCase() === "c") {
+      clearEverything();
+    } else if (key === "Backspace" || key === "Delete") {
+      event.preventDefault();
+      clearDisplay();
+    }
+  });
 });

@@ -25,51 +25,135 @@
 
         <div class="calculator__keys">
           <button class="process" id="C" onclick="clearEverything()">C</button>
-          <button class="process" id="CE" onclick="clearDisplay()">CE</button>
-          <button class="process" id="/" onclick="appendToDisplay('/')">
+          <button
+            class="process"
+            id="CE"
+            onclick="clearDisplay()"
+            keyevent="CE"
+          >
+            CE
+          </button>
+          <button
+            class="process"
+            id="/"
+            onclick="appendToDisplay('/')"
+            keyevent="%"
+          >
             /
           </button>
-          <button class="process" id="*" onclick="appendToDisplay('*')">
+          <button
+            class="process"
+            id="*"
+            onclick="appendToDisplay('*')"
+            keyevent="*"
+          >
             *
           </button>
-          <button class="number" id="7" onclick="appendToDisplay('7')">
+          <button
+            class="number"
+            id="7"
+            onclick="appendToDisplay('7')"
+            keyevent="7"
+          >
             7
           </button>
-          <button class="number" id="8" onclick="appendToDisplay('8')">
+          <button
+            class="number"
+            id="8"
+            onclick="appendToDisplay('8')"
+            keyevent="8"
+          >
             8
           </button>
-          <button class="number" id="9" onclick="appendToDisplay('9')">
+          <button
+            class="number"
+            id="9"
+            onclick="appendToDisplay('9')"
+            keyevent="9"
+          >
             9
           </button>
-          <button class="process" id="-" onclick="appendToDisplay('-')">
+          <button
+            class="process"
+            id="-"
+            onclick="appendToDisplay('-')"
+            keyevent="-"
+          >
             -
           </button>
-          <button class="number" id="4" onclick="appendToDisplay('4')">
+          <button
+            class="number"
+            id="4"
+            onclick="appendToDisplay('4')"
+            keyevent="4"
+          >
             4
           </button>
-          <button class="number" id="5" onclick="appendToDisplay('5')">
+          <button
+            class="number"
+            id="5"
+            onclick="appendToDisplay('5')"
+            keyevent="5"
+          >
             5
           </button>
-          <button class="number" id="6" onclick="appendToDisplay('6')">
+          <button
+            class="number"
+            id="6"
+            onclick="appendToDisplay('6')"
+            keyevent="6"
+          >
             6
           </button>
-          <button class="process" id="+" onclick="appendToDisplay('+')">
+          <button
+            class="process"
+            id="+"
+            onclick="appendToDisplay('+')"
+            keyevent="+"
+          >
             +
           </button>
-          <button class="number" id="1" onclick="appendToDisplay('1')">
+          <button
+            class="number"
+            id="1"
+            onclick="appendToDisplay('1')"
+            keyevent="1"
+          >
             1
           </button>
-          <button class="number" id="2" onclick="appendToDisplay('2')">
+          <button
+            class="number"
+            id="2"
+            onclick="appendToDisplay('2')"
+            keyevent="2"
+          >
             2
           </button>
-          <button class="number" id="3" onclick="appendToDisplay('3')">
+          <button
+            class="number"
+            id="3"
+            onclick="appendToDisplay('3')"
+            keyevent="3"
+          >
             3
           </button>
-          <button id="null" onclick="appendToDisplay('0')">0</button>
-          <button class="number" id="." onclick="appendToDisplay('.')">
+          <button id="null" onclick="appendToDisplay('0')" keyevent="0">
+            0
+          </button>
+          <button
+            class="number"
+            id="."
+            onclick="appendToDisplay('.')"
+            keyevent="."
+          >
             .
           </button>
-          <button class="calculate" id="=" onclick="appendToDisplay('=')">
+          <button
+            class="calculate"
+            id="="
+            onclick="appendToDisplay('=')"
+            keyevent="="
+          >
             =
           </button>
         </div>
