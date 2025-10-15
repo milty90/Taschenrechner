@@ -45,7 +45,7 @@ body {
 
 .results {
   display: flex;
-  width: 50%;
+  width: 30%;
   height: 500px;
   color: var(--primary-text-color);
   flex-direction: column;

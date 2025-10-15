@@ -17,7 +17,7 @@ function appendToDisplay(value) {
         const calculation =
           previousValue + " " + currentOperator + " " + display.value;
 
-        console.log("Calculation:", calculation);
+        // console.log("Calculation:", calculation);
 
         const result = calculateResult(
           previousValue,
