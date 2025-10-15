@@ -39,6 +39,9 @@ function appendToDisplay(value) {
         listItem.innerHTML = fullCalculation;
         resultsListElement.appendChild(listItem);
 
+        const resultsContainer = document.querySelector(".results");
+        resultsContainer.scrollTop = 0;
+
         displayResult.value = calculation;
 
         display.value = result;
