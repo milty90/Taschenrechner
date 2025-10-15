@@ -14,12 +14,25 @@ function appendToDisplay(value) {
   if (value === "=") {
     try {
       if (display.value && currentOperator && previousValue) {
-        const calculation = `${previousValue} ${currentOperator} ${display.value}`;
+        const calculation =
+          previousValue + " " + currentOperator + " " + display.value;
 
-        const result = eval(calculation.replace(/\s/g, ""));
-        // console.log("Calculation:", calculation, "Result:", result);
+        console.log("Calculation:", calculation);
 
-        const fullCalculation = `${calculation} = ${result}`;
+        const result = calculateResult(
+          previousValue,
+          currentOperator,
+          display.value
+        );
+
+        const fullCalculation =
+          parseFloat(previousValue) +
+          " " +
+          currentOperator +
+          " " +
+          parseFloat(display.value) +
+          " = " +
+          result;
 
         resultsList.push(fullCalculation);
         const listItem = document.createElement("li");
@@ -38,20 +51,21 @@ function appendToDisplay(value) {
       }
     } catch (error) {
       display.value = "Fehler";
+      console.error("Fehler während der Berechnung:", error);
     }
   } else if (operators.includes(value)) {
     if (display.value) {
       if (currentOperator && previousValue && !isNewCalculation) {
-        const tempResult = eval(
-          `${previousValue} ${currentOperator} ${display.value}`
+        display.value = calculateResult(
+          previousValue,
+          currentOperator,
+          display.value
         );
-        display.value = tempResult;
-        previousValue = tempResult.toString();
       } else {
         previousValue = display.value;
       }
       currentOperator = value;
-      displayResult.value = `${previousValue} ${value}`;
+      displayResult.value = previousValue + value;
       display.value = "";
       isNewCalculation = false;
     }
@@ -65,6 +79,22 @@ function appendToDisplay(value) {
     }
     display.value += value;
   }
+}
+
+function calculateResult(previousValue, currentOperator, currentValue) {
+  let tempResult;
+  if (currentOperator === "+") {
+    tempResult = parseFloat(previousValue) + parseFloat(currentValue);
+  } else if (currentOperator === "-") {
+    tempResult = parseFloat(previousValue) - parseFloat(currentValue);
+  } else if (currentOperator === "*") {
+    tempResult = parseFloat(previousValue) * parseFloat(currentValue);
+  } else if (currentOperator === "/") {
+    tempResult = parseFloat(previousValue) / parseFloat(currentValue);
+  } else {
+    tempResult = parseFloat(currentValue);
+  }
+  return tempResult;
 }
 
 function clearDisplay() {
