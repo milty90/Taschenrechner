@@ -1,7 +1,7 @@
-var resultsList = [];
-var previousValue = "";
-var currentOperator = "";
-var isNewCalculation = false;
+let resultsList = [];
+let previousValue = "";
+let currentOperator = "";
+let isNewCalculation = false;
 
 const display = document.getElementById("display");
 const displayResult = document.getElementById("display_result");
@@ -13,44 +13,57 @@ function appendToDisplay(value) {
 
   if (value === "=") {
     try {
-      if (display.value && currentOperator && previousValue) {
-        const calculation =
-          previousValue + " " + currentOperator + " " + display.value;
+      if (display.value) {
+        let calculation = display.value;
+        let result;
 
-        // console.log("Calculation:", calculation);
+        const hasOperators = operators.some((op) => calculation.includes(op));
 
-        const result = calculateResult(
-          previousValue,
-          currentOperator,
-          display.value
-        );
+        if (hasOperators) {
+          result = eval(calculation.replace(/\s/g, ""));
 
-        const fullCalculation =
-          parseFloat(previousValue) +
-          " " +
-          currentOperator +
-          " " +
-          parseFloat(display.value) +
-          " = " +
-          result;
+          const formattedCalculation = calculation
+            .replace(/\+/g, " + ")
+            .replace(/\-/g, " - ")
+            .replace(/\*/g, " * ")
+            .replace(/\//g, " / ");
 
-        resultsList.push(fullCalculation);
-        const listItem = document.createElement("li");
-        listItem.innerHTML = fullCalculation;
-        resultsListElement.appendChild(listItem);
+          const fullCalculation = `${formattedCalculation} = ${result}`;
+
+          resultsList.push(fullCalculation);
+          const listItem = document.createElement("li");
+          listItem.innerHTML = fullCalculation;
+          resultsListElement.appendChild(listItem);
+
+          displayResult.value = formattedCalculation;
+        } else if (currentOperator && previousValue) {
+          calculation =
+            previousValue + " " + currentOperator + " " + display.value;
+          result = calculateResult(
+            previousValue,
+            currentOperator,
+            display.value
+          );
+
+          const fullCalculation = `${parseFloat(
+            previousValue
+          )} ${currentOperator} ${parseFloat(display.value)} = ${result}`;
+
+          resultsList.push(fullCalculation);
+          const listItem = document.createElement("li");
+          listItem.innerHTML = fullCalculation;
+          resultsListElement.appendChild(listItem);
+
+          displayResult.value = calculation;
+        }
 
         const resultsContainer = document.querySelector(".results");
         resultsContainer.scrollTop = 0;
 
-        displayResult.value = calculation;
-
         display.value = result;
-
         previousValue = result.toString();
         currentOperator = "";
         isNewCalculation = true;
-
-        // console.log("Calculation added:", fullCalculation);
       }
     } catch (error) {
       display.value = "Fehler";
@@ -58,20 +71,10 @@ function appendToDisplay(value) {
     }
   } else if (operators.includes(value)) {
     if (display.value) {
-      if (currentOperator && previousValue && !isNewCalculation) {
-        display.value = calculateResult(
-          previousValue,
-          currentOperator,
-          display.value
-        );
-      } else {
-        previousValue = display.value;
-      }
-      currentOperator = value;
-      displayResult.value = previousValue + value;
-      display.value = "";
-      isNewCalculation = false;
+      display.value += value;
+      displayResult.value = display.value;
     }
+    isNewCalculation = false;
   } else {
     if (isNewCalculation) {
       display.value = "";

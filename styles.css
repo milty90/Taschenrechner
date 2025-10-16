@@ -114,6 +114,7 @@ body {
 hr {
   background-color: var(--secondary-color);
   width: 500px;
+
   margin: 0;
 }
 
