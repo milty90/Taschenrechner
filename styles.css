@@ -20,6 +20,7 @@
     inset 0 0.09375em 0.03125em rgb(255 255 255 / 0.2),
     0 0.0625em 0.0625em rgb(0 0 0 / 0.3);
 }
+
 body {
   overflow: hidden;
 }
