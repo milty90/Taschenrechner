@@ -7,6 +7,16 @@ const display = document.getElementById("display");
 const displayResult = document.getElementById("display_result");
 const resultsListElement = document.querySelector(".results-list");
 
+function updateDisplayFontSize() {
+  const displayLength = display.value.length;
+
+  if (displayLength > 10) {
+    display.style.fontSize = "1.2em";
+  } else {
+    display.style.fontSize = "2em";
+  }
+}
+
 function appendToDisplay(value) {
   console.log("Funktion wurde mit dem Wert aufgerufen:", value); // Test log
   const operators = ["+", "-", "*", "/"];
@@ -64,6 +74,7 @@ function appendToDisplay(value) {
         previousValue = result.toString();
         currentOperator = "";
         isNewCalculation = true;
+        updateDisplayFontSize();
       }
     } catch (error) {
       display.value = "Fehler";
@@ -73,6 +84,7 @@ function appendToDisplay(value) {
     if (display.value) {
       display.value += value;
       displayResult.value = display.value;
+      updateDisplayFontSize();
     }
     isNewCalculation = false;
   } else {
@@ -84,6 +96,7 @@ function appendToDisplay(value) {
       isNewCalculation = false;
     }
     display.value += value;
+    updateDisplayFontSize();
   }
 }
 
@@ -109,6 +122,7 @@ function clearDisplay() {
   previousValue = "";
   currentOperator = "";
   isNewCalculation = false;
+  updateDisplayFontSize();
 }
 
 function clearEverything() {
@@ -119,6 +133,7 @@ function clearEverything() {
   previousValue = "";
   currentOperator = "";
   isNewCalculation = false;
+  updateDisplayFontSize();
 }
 
 function toggleDisplayTheme() {

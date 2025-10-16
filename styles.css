@@ -154,10 +154,11 @@ hr {
   border: none;
   color: var(--primary-text-color);
   background: transparent;
-  font-size: clamp(1.5em, 1.6vw + 1.2em, 2em);
+  font-size: 2em;
   text-align: right;
   padding: 10px;
   outline: none;
+  transition: font-size 0.2s ease;
 }
 
 #display_result {
