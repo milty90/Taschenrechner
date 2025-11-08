@@ -57,7 +57,7 @@ body {
   font-size: 2rem;
   padding-left: 1rem;
   margin-top: 0;
-  scrollbar-width: thin;
+  scrollbar-width: none;
   overflow-y: scroll;
   gap: 1rem;
 }
