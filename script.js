@@ -13,7 +13,7 @@ function updateDisplayFontSize() {
   if (displayLength > 10) {
     display.style.fontSize = "1.2em";
   } else {
-    display.style.fontSize = "2em";
+    display.style.fontSize = "1.6em";
   }
 }
 
@@ -52,11 +52,11 @@ function appendToDisplay(value) {
           result = calculateResult(
             previousValue,
             currentOperator,
-            display.value
+            display.value,
           );
 
           const fullCalculation = `${parseFloat(
-            previousValue
+            previousValue,
           )} ${currentOperator} ${parseFloat(display.value)} = ${result}`;
 
           resultsList.push(fullCalculation);
